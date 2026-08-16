@@ -184,7 +184,6 @@ function AchievementsBox({ onZoomImage }) {
                 onError={() => handleImgError(imgIndex)}
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-void/95 via-void/30 to-transparent" />
               <div className="absolute top-2.5 right-2.5 w-6 h-6 rounded-full bg-void/70 border border-line flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 size={10} className="text-muted" />
               </div>
