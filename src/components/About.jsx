@@ -44,7 +44,7 @@ export default function About() {
         >
           <span className="font-mono text-xs text-violet-soft tracking-widest uppercase">About</span>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-ink mt-3 leading-tight text-balance">
-            AI/ML Engineer &amp;<br />Software Developer.
+            Building intelligent systems,<br />from models to products.
           </h2>
         </motion.div>
 
@@ -57,23 +57,17 @@ export default function About() {
             initial="hidden" whileInView="show"
             viewport={{ once: true, margin: '-80px' }} variants={fadeUp}
           >
-            <p className="text-muted text-base md:text-lg leading-relaxed">
-              I'm a <span className="text-ink font-medium">B.Tech Artificial Intelligence &amp; Machine Learning student</span> focused
-              on building intelligent, reliable, and user-focused software systems.
-              My interests go beyond traditional web development — I enjoy designing and developing
-              AI-powered applications, machine learning systems, backend services, data-driven solutions,
-              and full-stack products that address practical problems.
+            <p className="text-muted text-base md:text-[15px] leading-relaxed">
+              I'm a <span className="text-ink font-medium">B.Tech Artificial Intelligence &amp; Machine Learning student</span> at Dhanekula Institute of Engineering &amp; Technology, focused on building intelligent, reliable, and user-centered software systems.
             </p>
-            <p className="text-muted text-base md:text-lg leading-relaxed">
-              I've worked across <span className="text-ink font-medium">Machine Learning, Deep Learning, Generative AI,
-              NLP, Computer Vision, Full-Stack Development, and Data Science</span> — combining AI models
-              with software engineering to turn ideas into functional applications.
+            <p className="text-muted text-base md:text-[15px] leading-relaxed">
+              My work spans <span className="text-ink font-medium">Machine Learning, Deep Learning, Generative AI, NLP, Computer Vision, Quantum ML, and Full-Stack Development</span>. I've built systems involving graph neural networks, quantum machine learning, RAG pipelines, knowledge graphs, multi-agent architectures, computer vision, and AI-powered applications.
             </p>
-            <p className="text-muted text-base md:text-lg leading-relaxed">
-              I particularly enjoy problems where <span className="text-ink font-medium">AI meets real-world software</span> —
-              from intelligent detection and prediction systems to AI-assisted applications and
-              decision-support platforms. My approach focuses on solutions that are
-              efficient, scalable, maintainable, and intuitive to use.
+            <p className="text-muted text-base md:text-[15px] leading-relaxed">
+              What I enjoy most is taking an AI idea beyond the model itself — designing the <span className="text-ink font-medium">data pipeline, model, backend, APIs, and user-facing application</span> needed to turn it into a practical product. My projects range from a hybrid quantum-classical fraud detection system and an ISRO-focused RAG assistant to autonomous QA agents and deep-learning-based driver distraction detection.
+            </p>
+            <p className="text-muted text-base md:text-[15px] leading-relaxed">
+              I'm particularly interested in <span className="text-ink font-medium">AI Engineering and Software Engineering roles</span> where machine intelligence meets scalable, well-designed software.
             </p>
 
             {/* Skill pills with icons — 5 groups */}
@@ -138,8 +132,17 @@ export default function About() {
               <div className="pt-2 border-t border-line space-y-2">
                 <p className="font-mono text-[10px] text-faint uppercase tracking-wider">Core Competencies</p>
                 <div className="flex flex-wrap gap-2">
-                  {['Machine Learning','Deep Learning','Generative AI','NLP','Computer Vision','Full-Stack Dev','Data Science','Quantum ML'].map(c => (
-                    <span key={c} className="text-[11px] px-2.5 py-1 rounded-lg bg-void border border-line text-muted">
+                  {[
+                    'Machine Learning',
+                    'Deep Learning',
+                    'Generative AI',
+                    'NLP',
+                    'Computer Vision',
+                    'AI Engineering',
+                    'Full-Stack Engineering',
+                    'Quantum ML'
+                  ].map(c => (
+                    <span key={c} className="text-[11px] px-2.5 py-1 rounded-lg bg-void border border-line text-muted font-mono hover:text-violet-soft hover:border-violet/35 transition-colors cursor-default">
                       {c}
                     </span>
                   ))}

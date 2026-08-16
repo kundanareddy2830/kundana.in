@@ -220,8 +220,8 @@ export default function Contact() {
           </div>
 
           <div className="flex items-center gap-4">
-            <p className="text-xs text-faint flex items-center gap-1">
-              © {new Date().getFullYear()} Made with <span className="text-red-400">♥</span> by Kundana Reddy
+            <p className="text-xs text-faint">
+              © 2026 Kundana Reddy Tamma
             </p>
             <div className="flex items-center gap-3">
               {SOCIALS.map(({ icon: Icon, label, href }) => (

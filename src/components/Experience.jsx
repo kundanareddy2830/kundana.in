@@ -106,7 +106,6 @@ function AchievementsBox() {
       <div className="px-5 py-4 border-b border-line flex items-center gap-2.5">
         <Trophy size={14} className="text-violet-soft" />
         <p className="font-display text-sm font-semibold text-ink">Achievements</p>
-        <span className="ml-auto font-mono text-[10px] text-faint">{achievements.length} total</span>
       </div>
       <div className="p-3 space-y-1">
         {achievements.map((a, i) => (
@@ -137,7 +136,6 @@ function CertsBox() {
       <div className="px-5 py-4 border-b border-line flex items-center gap-2.5">
         <Award size={14} className="text-violet-soft" />
         <p className="font-display text-sm font-semibold text-ink">Certifications</p>
-        <span className="ml-auto font-mono text-[10px] text-faint">{certs.length} total</span>
       </div>
       <div className="overflow-y-auto max-h-[260px] custom-scrollbar">
         <ul className="p-3 space-y-1">

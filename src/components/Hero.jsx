@@ -84,9 +84,7 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 1.15, ease }}
               className="mt-5 text-[15px] text-muted leading-relaxed max-w-md"
             >
-              I build intelligent software systems that combine AI/ML, data,
-              and modern software engineering to solve real-world problems —
-              spanning machine learning, generative AI, backend systems, and full-stack applications.
+              I build intelligent software systems that combine AI/ML with modern software engineering — from GNN and quantum-ML pipelines to RAG, LLM, computer vision, and full-stack applications. I focus on turning complex technical ideas into reliable, usable products that solve real-world problems.
             </motion.p>
 
             {/* Stats */}
