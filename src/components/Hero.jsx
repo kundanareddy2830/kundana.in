@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, Mail, Trophy, Sparkles } from 'lucide-react'
+import { ArrowDown, Github, Linkedin, Mail, Trophy, Sparkles, MapPin } from 'lucide-react'
 
 const stats = [
   { value: '20+', label: 'Projects' },
@@ -64,31 +64,22 @@ export default function Hero() {
               </h1>
             </motion.div>
 
-            {/* Role */}
+            {/* Role & Location */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.0, ease }}
-              className="mt-4 flex flex-wrap items-center gap-2 text-xs text-faint font-mono"
+              className="mt-4 flex flex-wrap items-center gap-3 text-xs text-faint font-mono"
             >
               <span className="px-3 py-1 rounded-full border border-violet/25 bg-violet/[0.07] text-violet-soft text-[11px] tracking-wide">
                 AI/ML Engineer &amp; Software Developer
               </span>
+              <span className="flex items-center gap-1.5"><MapPin size={12} /> Vijayawada, India</span>
             </motion.div>
-
-            {/* Bio */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 1.15, ease }}
-              className="mt-5 text-[15px] text-muted leading-relaxed max-w-md"
-            >
-              I build intelligent software systems that combine AI/ML, data, and modern software engineering to solve real-world problems — spanning machine learning, generative AI, computer vision, backend systems, and full-stack applications.
-            </motion.p>
 
             {/* Stats */}
             <motion.div
-              className="mt-7 grid grid-cols-4 gap-2 sm:gap-3"
+              className="mt-6 grid grid-cols-4 gap-2 sm:gap-3"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.3, ease }}

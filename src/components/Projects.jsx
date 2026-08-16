@@ -204,8 +204,8 @@ export default function Projects() {
         <div>
           <div className="flex items-end justify-between mb-8">
             <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp}>
-              <span className="font-mono text-xs text-violet-soft tracking-widest uppercase">GitHub Archive</span>
-              <h3 className="font-display text-2xl md:text-3xl font-bold text-ink mt-2">All Projects</h3>
+              <span className="font-mono text-xs text-violet-soft tracking-widest uppercase">Repository Archives</span>
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-ink mt-2">GitHub Archive</h3>
             </motion.div>
             <motion.button onClick={() => setShowMore(!showMore)} whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}
               className="hidden sm:flex items-center gap-2 text-sm px-4 py-2 rounded-full border border-line text-muted hover:text-ink hover:border-faint transition-colors"
