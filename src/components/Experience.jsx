@@ -44,7 +44,7 @@ const roles = [
 
 const achievements = [
   { text: 'Winner — Amaravati Quantum Valley Hackathon 2025 (National Level)', highlight: true },
-  { text: 'Finalist — Bharatiya Antariksh Hackathon 2025 (ISRO)', highlight: true },
+  { text: 'Participant — Bharatiya Antariksh Hackathon 2025 (ISRO)', highlight: true },
   { text: 'Participant — Adobe University Hackathon (Adobe)', award: true },
 ]
 
@@ -253,110 +253,38 @@ function CertsBox() {
   )
 }
 
-/* ── Education Card ────────────────────────────────────────────────────── */
-function EducationCard() {
-  return (
-    <div className="rounded-2xl border border-line bg-surface/70 backdrop-blur-sm p-6 space-y-4">
-      <div className="flex items-center gap-2">
-        <GraduationCap size={16} className="text-violet-soft" />
-        <p className="font-mono text-[10px] text-faint uppercase tracking-wider">Education</p>
-      </div>
-      <div className="space-y-2">
-        <h3 className="text-base text-ink font-semibold leading-snug">Dhanekula Institute of Engineering &amp; Technology</h3>
-        <p className="text-sm text-muted">B.Tech Artificial Intelligence &amp; Machine Learning</p>
-        <div className="flex items-center gap-4 text-xs text-faint font-mono">
-          <span className="flex items-center gap-1"><Calendar size={12} /> 2023 – 2027</span>
-        </div>
-      </div>
-      <div className="pt-2 border-t border-line flex items-center justify-between">
-        <span className="text-xs text-muted">Academic Standing</span>
-        <span className="inline-block text-xs px-3 py-1.5 rounded-full bg-violet/15 border border-violet/30 text-violet-soft font-mono">
-          CGPA 9.4 / 10
-        </span>
-      </div>
-    </div>
-  )
-}
-
 /* ── Main Component ────────────────────────────────────────────────────── */
-const TABS = ['Experience', 'Education']
-
 export default function Experience() {
-  const [tab, setTab] = useState(0)
   const [selectedImg, setSelectedImg] = useState(null)
 
   return (
     <section id="experience" className="py-28 md:py-36 border-t border-line">
       <div className="max-w-6xl mx-auto px-6 md:px-10">
 
-        {/* Header + tabs */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.5 }}
-          className="mb-10"
+          className="mb-14"
         >
           <span className="font-mono text-xs text-violet-soft tracking-widest uppercase">Career</span>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-ink mt-2 mb-6">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-ink mt-2">
             Experience &amp; Achievements
           </h2>
-
-          {/* Tab switcher */}
-          <div className="inline-flex p-1 rounded-xl bg-surface/80 border border-line backdrop-blur-sm">
-            {TABS.map((t, i) => (
-              <button
-                key={t}
-                onClick={() => setTab(i)}
-                className={`relative px-5 py-2 rounded-lg text-sm font-medium transition-colors ${
-                  tab === i ? 'text-ink' : 'text-muted hover:text-ink'
-                }`}
-              >
-                {tab === i && (
-                  <motion.div
-                    layoutId="tab-bg"
-                    className="absolute inset-0 rounded-lg bg-violet/20 border border-violet/35"
-                    transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
-                  />
-                )}
-                <span className="relative z-10">{t}</span>
-              </button>
-            ))}
-          </div>
         </motion.div>
 
-        {/* Tab content */}
-        <AnimatePresence mode="wait">
-          {tab === 0 ? (
-            <motion.div key="exp"
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.35 }}
-              className="grid md:grid-cols-12 gap-10 items-start"
-            >
-              {/* Timeline */}
-              <div className="md:col-span-7">
-                {roles.map((r, i) => <TimelineItem key={r.title} role={r} index={i} />)}
-              </div>
-              {/* Achievements + Certs beside timeline */}
-              <div className="md:col-span-5 sticky top-20 space-y-6">
-                <AchievementsBox onZoomImage={setSelectedImg} />
-                <CertsBox />
-              </div>
-            </motion.div>
-          ) : (
-            <motion.div key="edu"
-              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.35 }}
-              className="grid md:grid-cols-12 gap-10 items-start"
-            >
-              <div className="md:col-span-7">
-                <EducationCard />
-              </div>
-              <div className="md:col-span-5 space-y-6">
-                <AchievementsBox onZoomImage={setSelectedImg} />
-                <CertsBox />
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Main Grid Layout */}
+        <div className="grid md:grid-cols-12 gap-10 items-start">
+          {/* Left Column: Timeline */}
+          <div className="md:col-span-7">
+            {roles.map((r, i) => <TimelineItem key={r.title} role={r} index={i} />)}
+          </div>
+          {/* Right Column: Achievements + Certs Box (Sticky) */}
+          <div className="md:col-span-5 sticky top-24 space-y-6">
+            <AchievementsBox onZoomImage={setSelectedImg} />
+            <CertsBox />
+          </div>
+        </div>
       </div>
 
       {/* Lightbox / Zoom Modal */}

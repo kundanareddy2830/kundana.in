@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ArrowDown, Github, Linkedin, Mail, Trophy, Sparkles, MapPin } from 'lucide-react'
+import { ArrowDown, Github, Linkedin, Mail, Trophy, Sparkles } from 'lucide-react'
 
 const stats = [
   { value: '20+', label: 'Projects' },
@@ -59,23 +59,31 @@ export default function Hero() {
             >
               <p className="font-mono text-sm text-faint mb-2 tracking-widest">Hi, I'm</p>
               <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
-                <span className="text-ink">Kundana Reddy</span><br />
-                <span className="text-violet-soft">Tamma</span>
+                <span className="text-ink">Kundana Reddy</span>
               </h1>
             </motion.div>
 
-            {/* Role & Location */}
+            {/* Role */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 1.0, ease }}
-              className="mt-4 flex flex-wrap items-center gap-3 text-xs text-faint font-mono"
+              className="mt-4 flex flex-wrap items-center gap-2 text-xs text-faint font-mono"
             >
               <span className="px-3 py-1 rounded-full border border-violet/25 bg-violet/[0.07] text-violet-soft text-[11px] tracking-wide">
                 AI/ML Engineer &amp; Software Developer
               </span>
-              <span className="flex items-center gap-1.5"><MapPin size={12} /> Vijayawada, India</span>
             </motion.div>
+
+            {/* Tagline */}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1.15, ease }}
+              className="mt-4 text-[15px] text-muted leading-relaxed max-w-md"
+            >
+              Building intelligent software that solves real-world problems.
+            </motion.p>
 
             {/* Stats */}
             <motion.div
