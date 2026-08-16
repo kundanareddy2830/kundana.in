@@ -1,0 +1,246 @@
+import { useState, useRef } from 'react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { Briefcase, Award, Trophy, GraduationCap } from 'lucide-react'
+import { TechTag } from './TechTag.jsx'
+
+/* ── Data ──────────────────────────────────────────────────────────────── */
+const roles = [
+  {
+    period: 'Jun 2026 — Present',
+    title: 'AI-ML Intern',
+    org: 'Google via EduSkills Foundation (AICTE)',
+    description: 'Built and evaluated TensorFlow models across object detection, custom image classification, and product-image search pipelines.',
+    tags: ['TensorFlow', 'Python'],
+  },
+  {
+    period: 'Dec 2025 — Feb 2026',
+    title: 'Quantum Portfolio Optimization Intern',
+    org: 'QuEdX',
+    description: 'Implemented and benchmarked quantum portfolio optimization algorithms through simulation, maintaining full experiment documentation.',
+    tags: ['Qiskit', 'Python'],
+  },
+  {
+    period: 'Sep 2025 — Dec 2025',
+    title: 'R&D Intern',
+    org: 'Storefinity',
+    description: 'Conducted AI research experiments and optimized backend ML pipelines for applied machine learning systems.',
+    tags: ['Python'],
+  },
+  {
+    period: 'Jul 2025 — Aug 2025',
+    title: 'Full Stack Developer Intern',
+    org: 'CodeAlpha',
+    description: 'Built and integrated full-stack application components, connecting REST API-driven backend services with React frontend workflows.',
+    tags: ['React', 'FastAPI'],
+  },
+  {
+    period: 'Jun 2025 — Jul 2025',
+    title: 'Data Science Intern',
+    org: 'InternPro',
+    description: 'Conducted exploratory data analysis and built predictive ML models using Python, Pandas, and Scikit-learn.',
+    tags: ['Python', 'Pandas', 'Scikit-learn'],
+  },
+]
+
+const certs = [
+  // ── Competitions first (show competitive edge) ──
+  { text: 'Winner — Amaravati Quantum Valley Hackathon 2025 (National Level)', highlight: true },
+  { text: 'Finalist — Bharatiya Antariksh Hackathon 2025 (ISRO)', highlight: true },
+  { text: 'Participant — Adobe University Hackathon (Adobe)', award: true },
+
+  // ── AI / ML — prestigious issuers ──
+  { text: 'Neural Networks and Deep Learning — Great Learning' },
+  { text: 'OpenCV Certification — OpenCV University' },
+  { text: 'Introduction to Large Language Models — Google Cloud' },
+  { text: 'Artificial Intelligence Fundamentals — IBM' },
+  { text: 'Prepare to Develop AI Solutions on Azure — Microsoft' },
+  { text: 'Fundamentals of Generative AI — Microsoft' },
+  { text: 'ChatGPT for Beginners — Great Learning' },
+
+  // ── Data / Analytics ──
+  { text: 'GenAI Powered Data Analytics Job Simulation — Tata (Forage)' },
+  { text: 'Data Analytics — Google Cloud Career Launchpad' },
+  { text: 'Big Data Technologies and Applications — Coursera' },
+
+  // ── CS Fundamentals ──
+  { text: 'Data Structures — Infosys' },
+]
+
+/* ── Timeline Item ─────────────────────────────────────────────────────── */
+function TimelineItem({ role, index }) {
+  const ref    = useRef(null)
+  const inView = useInView(ref, { once: true, margin: '-60px' })
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, x: -16 }}
+      animate={inView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.5, delay: index * 0.08 }}
+      className="relative pl-7 pb-6 last:pb-0"
+    >
+      <div className="absolute left-0 top-0 bottom-0 w-px bg-line">
+        <motion.div className="absolute top-0 w-full bg-gradient-to-b from-violet to-transparent"
+          initial={{ height: 0 }} animate={inView ? { height: '100%' } : {}}
+          transition={{ duration: 0.7, delay: index * 0.08 + 0.1 }}
+        />
+      </div>
+      <motion.div className="absolute left-[-4px] top-[7px] w-[9px] h-[9px] rounded-full border-2 border-violet bg-void"
+        initial={{ scale: 0 }} animate={inView ? { scale: 1 } : {}}
+        transition={{ duration: 0.25, delay: index * 0.08 }}
+      />
+      <div className="p-4 rounded-xl bg-surface/60 border border-line hover:border-violet/35 transition-colors backdrop-blur-sm group">
+        <p className="font-mono text-[10px] text-faint mb-1">{role.period}</p>
+        <h3 className="font-display text-[14px] font-semibold text-ink group-hover:text-violet-soft transition-colors">{role.title}</h3>
+        <p className="text-xs text-violet-soft mt-0.5 mb-2.5 flex items-center gap-1.5">
+          <Briefcase size={10} className="shrink-0" />{role.org}
+        </p>
+        <p className="text-[12px] text-muted leading-relaxed mb-2.5">{role.description}</p>
+        <div className="flex flex-wrap gap-1.5">
+          {role.tags.map(t => <TechTag key={t} label={t} size={11} />)}
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+/* ── Certs box ─────────────────────────────────────────────────────────── */
+function CertsBox() {
+  return (
+    <div className="rounded-2xl border border-line bg-surface/70 backdrop-blur-sm overflow-hidden">
+      <div className="px-5 py-4 border-b border-line flex items-center gap-2.5">
+        <Award size={14} className="text-violet-soft" />
+        <p className="font-display text-sm font-semibold text-ink">Certifications</p>
+        <span className="ml-auto font-mono text-[10px] text-faint">{certs.length} total</span>
+      </div>
+      <div className="overflow-y-auto" style={{ maxHeight: '380px' }}>
+        <ul className="p-3 space-y-1">
+          {certs.map((c, i) => (
+            <motion.li key={c.text}
+              initial={{ opacity: 0, x: 8 }} whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }} transition={{ delay: i * 0.04 }}
+              className={`flex items-center gap-3 px-3.5 py-3 rounded-xl border transition-all ${
+                c.highlight
+                  ? 'border-violet/40 bg-violet/10 text-violet-soft'
+                  : c.award
+                  ? 'border-amber-700/30 bg-amber-950/20 text-amber-300/80'
+                  : 'border-transparent hover:border-line hover:bg-void/40 text-muted'
+              }`}
+            >
+              <span className="shrink-0">
+                {c.highlight
+                  ? <Trophy size={13} />
+                  : c.award
+                  ? <Award size={13} className="text-amber-400/70" />
+                  : <Award size={12} className="text-faint" />
+                }
+              </span>
+              <span className="text-[12px] leading-snug">{c.text}</span>
+            </motion.li>
+          ))}
+        </ul>
+      </div>
+      <div className="h-5 bg-gradient-to-t from-surface/70 to-transparent pointer-events-none" />
+    </div>
+  )
+}
+
+/* ── Education card ────────────────────────────────────────────────────── */
+function EducationCard() {
+  return (
+    <div className="rounded-2xl border border-line bg-surface/70 backdrop-blur-sm p-5 space-y-3">
+      <div className="flex items-center gap-2">
+        <GraduationCap size={14} className="text-violet-soft" />
+        <p className="font-mono text-[10px] text-faint uppercase tracking-wider">Education</p>
+      </div>
+      <div className="space-y-1">
+        <p className="text-sm text-ink font-semibold leading-snug">Dhanekula Institute of Engineering &amp; Technology</p>
+        <p className="text-xs text-muted">B.Tech Artificial Intelligence &amp; Machine Learning</p>
+        <p className="text-xs text-faint font-mono">2023 – 2027</p>
+      </div>
+      <span className="inline-block text-xs px-3 py-1 rounded-full bg-violet/15 border border-violet/30 text-violet-soft font-mono">
+        CGPA 9.4 / 10
+      </span>
+    </div>
+  )
+}
+
+/* ── Tabs ──────────────────────────────────────────────────────────────── */
+const TABS = ['Experience', 'Education & Certs']
+
+export default function Experience() {
+  const [tab, setTab] = useState(0)
+
+  return (
+    <section id="experience" className="py-28 md:py-36 border-t border-line">
+      <div className="max-w-6xl mx-auto px-6 md:px-10">
+
+        {/* Header + tabs */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }} transition={{ duration: 0.5 }}
+          className="mb-10"
+        >
+          <span className="font-mono text-xs text-violet-soft tracking-widest uppercase">Career</span>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-ink mt-2 mb-6">
+            Experience &amp; Recognition
+          </h2>
+
+          {/* Tab switcher */}
+          <div className="inline-flex p-1 rounded-xl bg-surface/80 border border-line backdrop-blur-sm">
+            {TABS.map((t, i) => (
+              <button
+                key={t}
+                onClick={() => setTab(i)}
+                className={`relative px-5 py-2 rounded-lg text-sm font-medium transition-colors ${
+                  tab === i ? 'text-ink' : 'text-muted hover:text-ink'
+                }`}
+              >
+                {tab === i && (
+                  <motion.div
+                    layoutId="tab-bg"
+                    className="absolute inset-0 rounded-lg bg-violet/20 border border-violet/35"
+                    transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
+                  />
+                )}
+                <span className="relative z-10">{t}</span>
+              </button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Tab content */}
+        <AnimatePresence mode="wait">
+          {tab === 0 ? (
+            <motion.div key="exp"
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.35 }}
+              className="grid md:grid-cols-12 gap-10 items-start"
+            >
+              {/* Timeline */}
+              <div className="md:col-span-7">
+                {roles.map((r, i) => <TimelineItem key={r.title} role={r} index={i} />)}
+              </div>
+              {/* Certs beside timeline */}
+              <div className="md:col-span-5 sticky top-20">
+                <CertsBox />
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div key="edu"
+              initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.35 }}
+              className="grid md:grid-cols-12 gap-6 items-start"
+            >
+              <div className="md:col-span-5">
+                <EducationCard />
+              </div>
+              <div className="md:col-span-7">
+                <CertsBox />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </section>
+  )
+}
