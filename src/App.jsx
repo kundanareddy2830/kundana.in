@@ -22,8 +22,8 @@ export default function App() {
       <Nav />
       <main className="relative" style={{ zIndex: 1 }}>
         <Hero />
-        <Projects />
         <About />
+        <Projects />
         <Experience />
         <Contact />
       </main>

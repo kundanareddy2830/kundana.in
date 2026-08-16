@@ -48,12 +48,12 @@ export default function About() {
           </h2>
         </motion.div>
 
-        {/* Main grid */}
-        <div className="grid md:grid-cols-12 gap-12 items-start">
+        {/* Top Segment: Bio + Education (Balanced Columns) */}
+        <div className="grid md:grid-cols-12 gap-10 items-start mb-16">
 
-          {/* Left Column: Story-driven bio paragraphs */}
+          {/* Left Column: Bio Paragraphs */}
           <motion.div
-            className="md:col-span-7 space-y-6"
+            className="md:col-span-7 space-y-5"
             initial="hidden" whileInView="show"
             viewport={{ once: true, margin: '-80px' }} variants={fadeUp}
           >
@@ -74,13 +74,12 @@ export default function About() {
             </p>
           </motion.div>
 
-          {/* Right Column: Education + Competencies + Skills (Perfect height balance) */}
+          {/* Right Column: Education & Competencies Card */}
           <motion.div
-            className="md:col-span-5 space-y-6 md:sticky md:top-24"
+            className="md:col-span-5"
             initial="hidden" whileInView="show"
             viewport={{ once: true, margin: '-80px' }} variants={fadeUp}
           >
-            {/* Education & Competencies Card */}
             <div className="p-6 rounded-2xl border border-line bg-surface/70 backdrop-blur-sm space-y-4">
               <p className="font-mono text-[10px] text-faint uppercase tracking-wider">Education</p>
 
@@ -116,35 +115,43 @@ export default function About() {
                 </div>
               </div>
             </div>
-
-            {/* Technical Skills Groups */}
-            <div className="p-6 rounded-2xl border border-line bg-surface/70 backdrop-blur-sm space-y-5">
-              <p className="font-mono text-[10px] text-faint uppercase tracking-wider">Technical Skills</p>
-              <div className="space-y-4">
-                {skillGroups.map((g, gi) => (
-                  <motion.div
-                    key={g.label}
-                    initial="hidden" whileInView="show"
-                    viewport={{ once: true, margin: '-40px' }}
-                    variants={stagger}
-                    transition={{ delayChildren: gi * 0.05 }}
-                  >
-                    <p className="font-mono text-[9px] text-faint uppercase tracking-wider mb-2">{g.label}</p>
-                    <div className="flex flex-wrap gap-1.5">
-                      {g.items.map(s => (
-                        <motion.div key={s} variants={pill} className="shrink-0">
-                          <TechTag label={s} size={11} />
-                        </motion.div>
-                      ))}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-
           </motion.div>
 
         </div>
+
+        {/* Separator line */}
+        <div className="w-full h-px bg-line my-10" />
+
+        {/* Bottom Segment: Full Width Technical Skills */}
+        <motion.div
+          initial="hidden" whileInView="show"
+          viewport={{ once: true, margin: '-80px' }} variants={fadeUp}
+          className="space-y-6"
+        >
+          <p className="font-mono text-[10px] text-faint uppercase tracking-wider">Technical Skills</p>
+          <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-6">
+            {skillGroups.map((g, gi) => (
+              <motion.div
+                key={g.label}
+                initial="hidden" whileInView="show"
+                viewport={{ once: true }}
+                variants={stagger}
+                transition={{ delayChildren: gi * 0.04 }}
+                className="space-y-3"
+              >
+                <p className="font-mono text-[10px] text-violet-soft uppercase tracking-wider border-b border-line pb-1">{g.label}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {g.items.map(s => (
+                    <motion.div key={s} variants={pill} className="shrink-0">
+                      <TechTag label={s} size={11} />
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
       </div>
     </section>
   )
