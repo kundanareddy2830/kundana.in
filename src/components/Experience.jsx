@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
-import { Briefcase, Award, Trophy, GraduationCap, Calendar, Star } from 'lucide-react'
+import { Briefcase, Award, Trophy, GraduationCap, Calendar, Star, ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react'
 import { TechTag } from './TechTag.jsx'
 
 /* ── Data ──────────────────────────────────────────────────────────────── */
@@ -62,6 +62,24 @@ const certs = [
   { text: 'Data Structures — Infosys' },
 ]
 
+const GALLERY = [
+  {
+    src: '/hackathon_1.jpg',
+    title: 'AQVH 2025 — National Winner',
+    desc: 'Awarded by Chief Minister & Quantum Industry Leaders for hybrid GNN+QML fraud detection system.',
+  },
+  {
+    src: '/hackathon_2.jpg',
+    title: 'BAH 2025 — ISRO Finalist',
+    desc: 'Presented Mosdac assistant RAG pipeline at ISRO space application center.',
+  },
+  {
+    src: '/hackathon_3.jpg',
+    title: 'Adobe Hackathon Presentation',
+    desc: 'Collaborative development and pitching during the Adobe University Hackathon.',
+  },
+]
+
 /* ── Timeline Item ─────────────────────────────────────────────────────── */
 function TimelineItem({ role, index }) {
   const ref    = useRef(null)
@@ -99,14 +117,33 @@ function TimelineItem({ role, index }) {
   )
 }
 
-/* ── Achievements Box ──────────────────────────────────────────────────── */
-function AchievementsBox() {
+/* ── Achievements Box with Optional Gallery ────────────────────────────── */
+function AchievementsBox({ onZoomImage }) {
+  const [imgIndex, setImgIndex] = useState(0)
+  const [imgErrors, setImgErrors] = useState({})
+
+  const nextImg = (e) => {
+    e.stopPropagation()
+    setImgIndex((prev) => (prev + 1) % GALLERY.length)
+  }
+
+  const prevImg = (e) => {
+    e.stopPropagation()
+    setImgIndex((prev) => (prev - 1 + GALLERY.length) % GALLERY.length)
+  }
+
+  const handleImgError = (idx) => {
+    setImgErrors((prev) => ({ ...prev, [idx]: true }))
+  }
+
   return (
     <div className="rounded-2xl border border-line bg-surface/70 backdrop-blur-sm overflow-hidden mb-6">
       <div className="px-5 py-4 border-b border-line flex items-center gap-2.5">
         <Trophy size={14} className="text-violet-soft" />
         <p className="font-display text-sm font-semibold text-ink">Achievements</p>
       </div>
+
+      {/* List */}
       <div className="p-3 space-y-1">
         {achievements.map((a, i) => (
           <motion.div key={a.text}
@@ -125,6 +162,66 @@ function AchievementsBox() {
           </motion.div>
         ))}
       </div>
+
+      {/* Gallery Section */}
+      <div className="px-4 pb-4 pt-2 border-t border-line/65">
+        <p className="font-mono text-[9px] text-faint uppercase tracking-wider mb-2">Ceremony Gallery</p>
+        <div 
+          className="relative h-36 rounded-lg bg-void/80 border border-line overflow-hidden group cursor-pointer"
+          onClick={() => !imgErrors[imgIndex] && onZoomImage(GALLERY[imgIndex])}
+        >
+          {imgErrors[imgIndex] ? (
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-3 bg-void/90 text-faint font-mono text-[9px] space-y-1.5">
+              <Trophy size={16} className="text-violet/30" />
+              <p className="text-muted text-[10px] font-sans font-semibold">Award Photo</p>
+              <p className="max-w-[160px] leading-relaxed">Save photo as {GALLERY[imgIndex].src} to view</p>
+            </div>
+          ) : (
+            <>
+              <img 
+                src={GALLERY[imgIndex].src} 
+                alt={GALLERY[imgIndex].title}
+                onError={() => handleImgError(imgIndex)}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-void/95 via-void/30 to-transparent" />
+              <div className="absolute top-2.5 right-2.5 w-6 h-6 rounded-full bg-void/70 border border-line flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                <Maximize2 size={10} className="text-muted" />
+              </div>
+            </>
+          )}
+
+          {/* Controls */}
+          <button 
+            onClick={prevImg}
+            className="absolute left-2.5 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-void/70 border border-line flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:border-violet/40 hover:bg-void"
+          >
+            <ChevronLeft size={12} className="text-muted" />
+          </button>
+          <button 
+            onClick={nextImg}
+            className="absolute right-2.5 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-void/70 border border-line flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:border-violet/40 hover:bg-void"
+          >
+            <ChevronRight size={12} className="text-muted" />
+          </button>
+
+          {/* Indicators */}
+          <div className="absolute bottom-2.5 right-2.5 flex gap-1 z-10">
+            {GALLERY.map((_, i) => (
+              <div 
+                key={i} 
+                className={`w-1 h-1 rounded-full transition-all ${i === imgIndex ? 'bg-violet-soft w-2.5' : 'bg-faint/60'}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Dynamic Caption */}
+        <div className="mt-2 min-h-[34px]">
+          <p className="text-[11px] font-semibold text-ink leading-snug">{GALLERY[imgIndex].title}</p>
+          <p className="text-[10px] text-muted leading-relaxed truncate">{GALLERY[imgIndex].desc}</p>
+        </div>
+      </div>
     </div>
   )
 }
@@ -137,13 +234,13 @@ function CertsBox() {
         <Award size={14} className="text-violet-soft" />
         <p className="font-display text-sm font-semibold text-ink">Certifications</p>
       </div>
-      <div className="overflow-y-auto max-h-[260px] custom-scrollbar">
+      <div className="overflow-y-auto max-h-[200px] custom-scrollbar">
         <ul className="p-3 space-y-1">
           {certs.map((c, i) => (
             <motion.li key={c.text}
               initial={{ opacity: 0, x: 8 }} whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }} transition={{ delay: i * 0.04 }}
-              className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl border border-transparent hover:border-line hover:bg-void/40 text-muted transition-all"
+              className="flex items-center gap-3 px-3.5 py-2 rounded-xl border border-transparent hover:border-line hover:bg-void/40 text-muted transition-all"
             >
               <span className="shrink-0">
                 <Award size={12} className="text-faint" />
@@ -174,7 +271,7 @@ function EducationCard() {
       </div>
       <div className="pt-2 border-t border-line flex items-center justify-between">
         <span className="text-xs text-muted">Academic Standing</span>
-        <span className="inline-block text-xs px-3 py-1 rounded-full bg-violet/15 border border-violet/30 text-violet-soft font-mono">
+        <span className="inline-block text-xs px-3 py-1.5 rounded-full bg-violet/15 border border-violet/30 text-violet-soft font-mono">
           CGPA 9.4 / 10
         </span>
       </div>
@@ -187,6 +284,7 @@ const TABS = ['Experience', 'Education']
 
 export default function Experience() {
   const [tab, setTab] = useState(0)
+  const [selectedImg, setSelectedImg] = useState(null)
 
   return (
     <section id="experience" className="py-28 md:py-36 border-t border-line">
@@ -240,7 +338,7 @@ export default function Experience() {
               </div>
               {/* Achievements + Certs beside timeline */}
               <div className="md:col-span-5 sticky top-20 space-y-6">
-                <AchievementsBox />
+                <AchievementsBox onZoomImage={setSelectedImg} />
                 <CertsBox />
               </div>
             </motion.div>
@@ -254,13 +352,51 @@ export default function Experience() {
                 <EducationCard />
               </div>
               <div className="md:col-span-5 space-y-6">
-                <AchievementsBox />
+                <AchievementsBox onZoomImage={setSelectedImg} />
                 <CertsBox />
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
+
+      {/* Lightbox / Zoom Modal */}
+      <AnimatePresence>
+        {selectedImg && (
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImg(null)}
+            className="fixed inset-0 z-50 bg-void/95 backdrop-blur-md flex flex-col items-center justify-center p-4 cursor-zoom-out"
+          >
+            <button 
+              className="absolute top-6 right-6 w-10 h-10 rounded-full bg-surface border border-line flex items-center justify-center text-muted hover:text-ink transition-colors"
+              onClick={() => setSelectedImg(null)}
+            >
+              <X size={20} />
+            </button>
+            <motion.div 
+              initial={{ scale: 0.95, y: 10 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 10 }}
+              transition={{ type: 'spring', damping: 25 }}
+              className="max-w-4xl w-full text-center space-y-4"
+              onClick={e => e.stopPropagation()}
+            >
+              <img 
+                src={selectedImg.src} 
+                alt={selectedImg.title}
+                className="max-h-[70vh] mx-auto rounded-xl border border-line shadow-2xl object-contain"
+              />
+              <div>
+                <h4 className="text-base font-bold text-ink">{selectedImg.title}</h4>
+                <p className="text-xs text-muted max-w-lg mx-auto mt-1 leading-relaxed">{selectedImg.desc}</p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   )
 }
