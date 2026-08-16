@@ -65,18 +65,18 @@ const certs = [
 const GALLERY = [
   {
     src: '/hackathon_1.jpg',
-    title: 'AQVH 2025 — National Winner',
-    desc: 'Awarded by Chief Minister & Quantum Industry Leaders for hybrid GNN+QML fraud detection system.',
+    title: 'Award Ceremony — AQVH 2025',
+    desc: 'Receiving the National Winner trophy from the Chief Minister and quantum industry leaders.',
   },
   {
     src: '/hackathon_2.jpg',
-    title: 'BAH 2025 — ISRO Finalist',
-    desc: 'Presented Mosdac assistant RAG pipeline at ISRO space application center.',
+    title: 'Project Presentation — AQVH 2025',
+    desc: 'Pitching our hybrid GNN + Quantum ML anomaly detection architecture to the judging panel.',
   },
   {
     src: '/hackathon_3.jpg',
-    title: 'Adobe Hackathon Presentation',
-    desc: 'Collaborative development and pitching during the Adobe University Hackathon.',
+    title: 'Team Collaboration — AQVH 2025',
+    desc: 'Working sessions designing and benchmark testing the QSVC & VQE Hamiltonian models.',
   },
 ]
 
