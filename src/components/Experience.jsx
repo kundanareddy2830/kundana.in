@@ -66,17 +66,17 @@ const GALLERY = [
   {
     src: '/hackathon_1.jpg',
     title: 'Award Ceremony — AQVH 2025',
-    desc: 'Receiving the National Winner trophy from the Chief Minister and quantum industry leaders.',
+    desc: 'Receiving the first-place National Winner trophy at the Amaravati Quantum Valley Hackathon.',
   },
   {
     src: '/hackathon_2.jpg',
-    title: 'Project Presentation — AQVH 2025',
-    desc: 'Pitching our hybrid GNN + Quantum ML anomaly detection architecture to the judging panel.',
+    title: 'Felicitation by Chief Minister',
+    desc: 'Felicitation ceremony and discussion with the Honorable Chief Minister of Andhra Pradesh.',
   },
   {
     src: '/hackathon_3.jpg',
-    title: 'Team Collaboration — AQVH 2025',
-    desc: 'Working sessions designing and benchmark testing the QSVC & VQE Hamiltonian models.',
+    title: 'Championship Memento',
+    desc: 'Holding the winner\'s trophy representing the national first-place finish.',
   },
 ]
 
