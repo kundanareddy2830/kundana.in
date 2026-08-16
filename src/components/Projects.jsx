@@ -13,7 +13,7 @@ const FEATURED = [
     description:
       'A hybrid GNN + quantum-ML fraud detection system. A Graph Attention Network encodes transaction topology; a Qiskit QSVC and VQE-based Hamiltonian model score anomalies — catching structurally fraudulent "mule" rings a classical XGBoost baseline misses entirely.',
     stat: { value: '94%', label: 'mule-ring detection vs 0% classical baseline' },
-    stack: ['Qiskit', 'PyTorch Geometric', 'FastAPI', 'React', 'Three.js'],
+    stack: ['Qiskit', 'PyTorch Geometric', 'NetworkX', 'TVAE', 'XGBoost', 'ChromaDB'],
     github: 'https://github.com/kundanareddy2830/Project-Foresight',
     demo: null,
   },
@@ -34,8 +34,8 @@ const FEATURED = [
     tag: 'Production E-Commerce Platform',
     badge: 'Full Stack',
     description:
-      'A production-ready, extensible e-commerce platform built with Django 4.2. Stateless sessions via signed cookies, full cart/order/user management, Whitenoise static assets, Pytest test suites, and optional Celery background tasks.',
-    stat: { value: 'Prod', label: 'ready Django 4.2 platform with full test coverage' },
+      'A full-stack, production-style e-commerce platform built with Django 4.2. Stateless sessions via signed cookies, full cart/order/user management, Whitenoise static assets, Pytest test suites, and optional Celery background tasks.',
+    stat: { value: 'Prod', label: 'style Django 4.2 platform with comprehensive automated testing' },
     stack: ['Python', 'Django', 'PostgreSQL', 'Whitenoise', 'Pytest'],
     github: 'https://github.com/kundanareddy2830/e-commerce',
     demo: 'https://e-commerce-n5fz.onrender.com',
@@ -45,8 +45,8 @@ const FEATURED = [
     title: 'NexusQA',
     tag: 'Autonomous Quality Intelligence Engine',
     description:
-      'A tri-agent QA platform — a Cartographer agent autonomously maps web apps into a Neo4j "semantic digital twin," an Inspector agent runs gray-box defect detection, and a Strategist agent auto-generates reproducible Playwright scripts for every bug found.',
-    stat: { value: '3', label: 'coordinated agents replacing brittle script-based testing' },
+      'Three coordinated agents that autonomously map applications, detect defects, and generate reproducible Playwright tests.',
+    stat: { value: '3', label: 'coordinated agents executing comprehensive automated testing' },
     stack: ['Python', 'FastAPI', 'React', 'Neo4j', 'Playwright'],
     github: 'https://github.com/kundanareddy2830/NexusQA',
     demo: null,
@@ -56,7 +56,7 @@ const FEATURED = [
     title: 'StudyChain',
     tag: 'AI Academic Digest Platform',
     description:
-      'An AI-powered academic platform using Groq-hosted LLMs to condense lecture material into concise digests, with JWT-authenticated workflows for persistent per-student progress tracking.',
+      'An AI-powered academic platform featuring high-throughput document processing using Groq-hosted LLMs to compile comprehensive structured study materials, complete with JWT-authenticated workflows for progress tracking.',
     stat: { value: 'Live', label: 'deployed with authenticated student workflows' },
     stack: ['FastAPI', 'React', 'Groq LLM', 'SQLAlchemy', 'JWT'],
     github: 'https://github.com/arifmohammad30/Study-Chain',

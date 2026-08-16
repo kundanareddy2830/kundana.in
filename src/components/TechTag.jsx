@@ -59,6 +59,12 @@ export const TECH_ICON_MAP = {
   'REST APIs':          { Icon: FaCode,          color: '#60A5FA' },
   'Object Detection':   { Icon: FaBrain,         color: '#F97316' },
   'Image Classification':{ Icon: FaBrain,        color: '#F97316' },
+  // Additional stack mappings for Project Foresight
+  NetworkX:             { Icon: FaCode,          color: '#818CF8' },
+  TVAE:                 { Icon: FaBrain,         color: '#C084FC' },
+  XGBoost:              { Icon: FaBrain,         color: '#FB923C' },
+  Streamlit:            { Icon: FaCode,          color: '#FB7185' },
+  Plotly:               { Icon: FaCode,          color: '#38BDF8' },
   // AI/ML concepts
   'Machine Learning':   { Icon: FaBrain,         color: '#A78BFA' },
   'Deep Learning':      { Icon: FaBrain,         color: '#C084FC' },

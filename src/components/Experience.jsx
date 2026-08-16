@@ -1,6 +1,6 @@
 import { useState, useRef } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
-import { Briefcase, Award, Trophy, GraduationCap } from 'lucide-react'
+import { Briefcase, Award, Trophy, GraduationCap, Calendar, Star } from 'lucide-react'
 import { TechTag } from './TechTag.jsx'
 
 /* ── Data ──────────────────────────────────────────────────────────────── */
@@ -42,13 +42,13 @@ const roles = [
   },
 ]
 
-const certs = [
-  // ── Competitions first (show competitive edge) ──
+const achievements = [
   { text: 'Winner — Amaravati Quantum Valley Hackathon 2025 (National Level)', highlight: true },
   { text: 'Finalist — Bharatiya Antariksh Hackathon 2025 (ISRO)', highlight: true },
   { text: 'Participant — Adobe University Hackathon (Adobe)', award: true },
+]
 
-  // ── AI / ML — prestigious issuers ──
+const certs = [
   { text: 'Neural Networks and Deep Learning — Great Learning' },
   { text: 'OpenCV Certification — OpenCV University' },
   { text: 'Introduction to Large Language Models — Google Cloud' },
@@ -56,13 +56,9 @@ const certs = [
   { text: 'Prepare to Develop AI Solutions on Azure — Microsoft' },
   { text: 'Fundamentals of Generative AI — Microsoft' },
   { text: 'ChatGPT for Beginners — Great Learning' },
-
-  // ── Data / Analytics ──
   { text: 'GenAI Powered Data Analytics Job Simulation — Tata (Forage)' },
   { text: 'Data Analytics — Google Cloud Career Launchpad' },
   { text: 'Big Data Technologies and Applications — Coursera' },
-
-  // ── CS Fundamentals ──
   { text: 'Data Structures — Infosys' },
 ]
 
@@ -103,7 +99,38 @@ function TimelineItem({ role, index }) {
   )
 }
 
-/* ── Certs box ─────────────────────────────────────────────────────────── */
+/* ── Achievements Box ──────────────────────────────────────────────────── */
+function AchievementsBox() {
+  return (
+    <div className="rounded-2xl border border-line bg-surface/70 backdrop-blur-sm overflow-hidden mb-6">
+      <div className="px-5 py-4 border-b border-line flex items-center gap-2.5">
+        <Trophy size={14} className="text-violet-soft" />
+        <p className="font-display text-sm font-semibold text-ink">Achievements</p>
+        <span className="ml-auto font-mono text-[10px] text-faint">{achievements.length} total</span>
+      </div>
+      <div className="p-3 space-y-1">
+        {achievements.map((a, i) => (
+          <motion.div key={a.text}
+            initial={{ opacity: 0, x: 8 }} whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }} transition={{ delay: i * 0.05 }}
+            className={`flex items-center gap-3 px-3.5 py-3 rounded-xl border transition-all ${
+              a.highlight
+                ? 'border-violet/40 bg-violet/10 text-violet-soft'
+                : 'border-amber-700/30 bg-amber-950/20 text-amber-300/80'
+            }`}
+          >
+            <span className="shrink-0">
+              {a.highlight ? <Trophy size={13} /> : <Star size={13} className="text-amber-400/70" />}
+            </span>
+            <span className="text-[12px] leading-snug font-medium">{a.text}</span>
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+/* ── Certs Box ─────────────────────────────────────────────────────────── */
 function CertsBox() {
   return (
     <div className="rounded-2xl border border-line bg-surface/70 backdrop-blur-sm overflow-hidden">
@@ -112,60 +139,53 @@ function CertsBox() {
         <p className="font-display text-sm font-semibold text-ink">Certifications</p>
         <span className="ml-auto font-mono text-[10px] text-faint">{certs.length} total</span>
       </div>
-      <div className="overflow-y-auto" style={{ maxHeight: '380px' }}>
+      <div className="overflow-y-auto max-h-[260px] custom-scrollbar">
         <ul className="p-3 space-y-1">
           {certs.map((c, i) => (
             <motion.li key={c.text}
               initial={{ opacity: 0, x: 8 }} whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }} transition={{ delay: i * 0.04 }}
-              className={`flex items-center gap-3 px-3.5 py-3 rounded-xl border transition-all ${
-                c.highlight
-                  ? 'border-violet/40 bg-violet/10 text-violet-soft'
-                  : c.award
-                  ? 'border-amber-700/30 bg-amber-950/20 text-amber-300/80'
-                  : 'border-transparent hover:border-line hover:bg-void/40 text-muted'
-              }`}
+              className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl border border-transparent hover:border-line hover:bg-void/40 text-muted transition-all"
             >
               <span className="shrink-0">
-                {c.highlight
-                  ? <Trophy size={13} />
-                  : c.award
-                  ? <Award size={13} className="text-amber-400/70" />
-                  : <Award size={12} className="text-faint" />
-                }
+                <Award size={12} className="text-faint" />
               </span>
               <span className="text-[12px] leading-snug">{c.text}</span>
             </motion.li>
           ))}
         </ul>
       </div>
-      <div className="h-5 bg-gradient-to-t from-surface/70 to-transparent pointer-events-none" />
     </div>
   )
 }
 
-/* ── Education card ────────────────────────────────────────────────────── */
+/* ── Education Card ────────────────────────────────────────────────────── */
 function EducationCard() {
   return (
-    <div className="rounded-2xl border border-line bg-surface/70 backdrop-blur-sm p-5 space-y-3">
+    <div className="rounded-2xl border border-line bg-surface/70 backdrop-blur-sm p-6 space-y-4">
       <div className="flex items-center gap-2">
-        <GraduationCap size={14} className="text-violet-soft" />
+        <GraduationCap size={16} className="text-violet-soft" />
         <p className="font-mono text-[10px] text-faint uppercase tracking-wider">Education</p>
       </div>
-      <div className="space-y-1">
-        <p className="text-sm text-ink font-semibold leading-snug">Dhanekula Institute of Engineering &amp; Technology</p>
-        <p className="text-xs text-muted">B.Tech Artificial Intelligence &amp; Machine Learning</p>
-        <p className="text-xs text-faint font-mono">2023 – 2027</p>
+      <div className="space-y-2">
+        <h3 className="text-base text-ink font-semibold leading-snug">Dhanekula Institute of Engineering &amp; Technology</h3>
+        <p className="text-sm text-muted">B.Tech Artificial Intelligence &amp; Machine Learning</p>
+        <div className="flex items-center gap-4 text-xs text-faint font-mono">
+          <span className="flex items-center gap-1"><Calendar size={12} /> 2023 – 2027</span>
+        </div>
       </div>
-      <span className="inline-block text-xs px-3 py-1 rounded-full bg-violet/15 border border-violet/30 text-violet-soft font-mono">
-        CGPA 9.4 / 10
-      </span>
+      <div className="pt-2 border-t border-line flex items-center justify-between">
+        <span className="text-xs text-muted">Academic Standing</span>
+        <span className="inline-block text-xs px-3 py-1 rounded-full bg-violet/15 border border-violet/30 text-violet-soft font-mono">
+          CGPA 9.4 / 10
+        </span>
+      </div>
     </div>
   )
 }
 
-/* ── Tabs ──────────────────────────────────────────────────────────────── */
-const TABS = ['Experience', 'Education & Certs']
+/* ── Main Component ────────────────────────────────────────────────────── */
+const TABS = ['Experience', 'Education']
 
 export default function Experience() {
   const [tab, setTab] = useState(0)
@@ -182,7 +202,7 @@ export default function Experience() {
         >
           <span className="font-mono text-xs text-violet-soft tracking-widest uppercase">Career</span>
           <h2 className="font-display text-3xl md:text-4xl font-bold text-ink mt-2 mb-6">
-            Experience &amp; Recognition
+            Experience &amp; Achievements
           </h2>
 
           {/* Tab switcher */}
@@ -220,8 +240,9 @@ export default function Experience() {
               <div className="md:col-span-7">
                 {roles.map((r, i) => <TimelineItem key={r.title} role={r} index={i} />)}
               </div>
-              {/* Certs beside timeline */}
-              <div className="md:col-span-5 sticky top-20">
+              {/* Achievements + Certs beside timeline */}
+              <div className="md:col-span-5 sticky top-20 space-y-6">
+                <AchievementsBox />
                 <CertsBox />
               </div>
             </motion.div>
@@ -229,12 +250,13 @@ export default function Experience() {
             <motion.div key="edu"
               initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.35 }}
-              className="grid md:grid-cols-12 gap-6 items-start"
+              className="grid md:grid-cols-12 gap-10 items-start"
             >
-              <div className="md:col-span-5">
+              <div className="md:col-span-7">
                 <EducationCard />
               </div>
-              <div className="md:col-span-7">
+              <div className="md:col-span-5 space-y-6">
+                <AchievementsBox />
                 <CertsBox />
               </div>
             </motion.div>

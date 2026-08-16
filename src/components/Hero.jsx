@@ -3,10 +3,10 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowDown, Github, Linkedin, Mail, Trophy, Sparkles, MapPin } from 'lucide-react'
 
 const stats = [
-  { value: '20+', label: 'Projects'       },
-  { value: '9.4', label: 'CGPA / 10'      },
-  { value: '5×',  label: 'Internships'    },
-  { value: '#1',  label: 'Hackathon Rank' },
+  { value: '20+', label: 'Projects' },
+  { value: '9.4', label: 'CGPA / 10' },
+  { value: '5',   label: 'Internships' },
+  { value: 'Winner', label: 'National Hackathon' },
 ]
 
 const ease = [0.22, 1, 0.36, 1]
