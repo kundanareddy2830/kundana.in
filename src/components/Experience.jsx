@@ -64,17 +64,17 @@ const certs = [
 
 const GALLERY = [
   {
-    src: '/hackathon_1.jpg',
+    src: '/hackathon_1.jpeg',
     title: 'Award Ceremony — AQVH 2025',
     desc: 'Receiving the first-place National Winner trophy at the Amaravati Quantum Valley Hackathon.',
   },
   {
-    src: '/hackathon_2.jpg',
+    src: '/hackathon_2.jpeg',
     title: 'Felicitation by Chief Minister',
     desc: 'Felicitation ceremony and discussion with the Honorable Chief Minister of Andhra Pradesh.',
   },
   {
-    src: '/hackathon_3.jpg',
+    src: '/hackathon_3.jpeg',
     title: 'Championship Memento',
     desc: 'Holding the winner\'s trophy representing the national first-place finish.',
   },
