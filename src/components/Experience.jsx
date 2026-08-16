@@ -44,7 +44,7 @@ const roles = [
 
 const achievements = [
   { text: 'Winner — Amaravati Quantum Valley Hackathon 2025 (National Level)', highlight: true },
-  { text: 'Participant — Bharatiya Antariksh Hackathon 2025 (ISRO)', highlight: true },
+  { text: 'Participant — Bharatiya Antariksh Hackathon 2025 (ISRO)', award: true },
   { text: 'Participant — Adobe University Hackathon (Adobe)', award: true },
 ]
 
