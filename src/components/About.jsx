@@ -44,7 +44,7 @@ export default function About() {
         >
           <span className="font-mono text-xs text-violet-soft tracking-widest uppercase">About</span>
           <h2 className="font-display text-3xl md:text-5xl font-bold text-ink mt-3 leading-tight text-balance">
-            Building intelligent systems,<br />from models to products.
+            AI/ML Engineer &amp;<br />Software Developer
           </h2>
         </motion.div>
 
@@ -58,16 +58,19 @@ export default function About() {
             viewport={{ once: true, margin: '-80px' }} variants={fadeUp}
           >
             <p className="text-muted text-base md:text-[15px] leading-relaxed">
-              I'm a <span className="text-ink font-medium">B.Tech Artificial Intelligence &amp; Machine Learning student</span> at Dhanekula Institute of Engineering &amp; Technology, focused on building intelligent, reliable, and user-centered software systems.
+              I'm a B.Tech Artificial Intelligence &amp; Machine Learning student at <strong className="text-ink font-semibold">Dhanekula Institute of Engineering &amp; Technology</strong>, focused on building intelligent, reliable, and user-centered software systems.
             </p>
             <p className="text-muted text-base md:text-[15px] leading-relaxed">
-              My work spans <span className="text-ink font-medium">Machine Learning, Deep Learning, Generative AI, NLP, Computer Vision, Quantum ML, and Full-Stack Development</span>. I've built systems involving graph neural networks, quantum machine learning, RAG pipelines, knowledge graphs, multi-agent architectures, computer vision, and AI-powered applications.
+              My work spans <strong className="text-ink font-semibold">Machine Learning, Deep Learning, Generative AI, NLP, Computer Vision, Data Science, and Full-Stack Development</strong>. I enjoy combining AI models with strong software engineering to turn ideas into practical applications — from intelligent prediction and detection systems to AI-powered platforms and full-stack products.
             </p>
             <p className="text-muted text-base md:text-[15px] leading-relaxed">
-              What I enjoy most is taking an AI idea beyond the model itself — designing the <span className="text-ink font-medium">data pipeline, model, backend, APIs, and user-facing application</span> needed to turn it into a practical product. My projects range from a hybrid quantum-classical fraud detection system and an ISRO-focused RAG assistant to autonomous QA agents and deep-learning-based driver distraction detection.
+              I've built and worked on projects involving <strong className="text-ink font-semibold">LLMs, RAG, knowledge graphs, recommendation systems, computer vision, multi-agent AI systems, and backend services</strong>. I've also explored <strong className="text-ink font-semibold">Quantum Machine Learning</strong> through research-oriented projects, combining classical machine learning with quantum algorithms to investigate new approaches to fraud detection.
             </p>
             <p className="text-muted text-base md:text-[15px] leading-relaxed">
-              I'm particularly interested in <span className="text-ink font-medium">AI Engineering and Software Engineering roles</span> where machine intelligence meets scalable, well-designed software.
+              What I enjoy most is working at the intersection of <strong className="text-ink font-semibold">AI and real-world software</strong> — taking a problem from data and model development through APIs, backend systems, databases, and user-facing applications. I focus on building solutions that are <strong className="text-ink font-semibold">efficient, maintainable, scalable, and intuitive to use</strong>.
+            </p>
+            <p className="text-muted text-base md:text-[15px] leading-relaxed">
+              I'm currently focused on growing as an <strong className="text-ink font-semibold">AI/ML Engineer and Software Engineer</strong>, with a strong interest in building production-oriented AI applications and intelligent software systems that solve meaningful real-world problems.
             </p>
 
             {/* Skill pills with icons — 5 groups */}
